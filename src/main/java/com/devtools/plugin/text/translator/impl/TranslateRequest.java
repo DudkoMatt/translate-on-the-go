@@ -1,5 +1,6 @@
 package com.devtools.plugin.text.translator.impl;
 
+import com.devtools.plugin.exceptions.NoTokenException;
 import com.devtools.plugin.exceptions.RequestException;
 import com.devtools.plugin.text.translator.Request;
 
@@ -8,6 +9,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class TranslateRequest implements Request {
     final private String token;
@@ -18,6 +21,13 @@ public class TranslateRequest implements Request {
      */
     TranslateRequest(String token) {
         this.token = token;
+    }
+
+    /**
+     * Constructor from token for API taken from file token.txt
+     */
+    TranslateRequest() throws NoTokenException {
+        this.token = extractToken();
     }
 
     @Override
@@ -32,6 +42,19 @@ public class TranslateRequest implements Request {
             return HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString()).body();
         } catch (IOException | InterruptedException e) {
             throw new RequestException("Error with sending the request", e);
+        }
+    }
+
+    /**
+     * Exctracts token from token.txt file
+     * @return api token
+     * @throws NoTokenException
+     */
+    private String extractToken() throws NoTokenException {
+        try {
+            return Files.readString(Paths.get("./src/main/java/com/devtools/plugin/text/translator/token.txt"));
+        } catch (IOException e) {
+            throw new NoTokenException("There is no file with token provided", e);
         }
     }
 }
