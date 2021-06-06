@@ -10,8 +10,12 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class TranslateRequest implements Request {
-    String token;
+    final private String token;
 
+    /**
+     * Constructor from token for API
+     * @param token api token
+     */
     TranslateRequest(String token) {
         this.token = token;
     }
