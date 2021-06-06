@@ -8,12 +8,13 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    compile fileTree(include: ['*.jar'], dir: 'libraries')
+    compile 'com.github.stleary:JSON-java:20210307'
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
