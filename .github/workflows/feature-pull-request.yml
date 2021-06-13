@@ -6,6 +6,9 @@ jobs:
     name: PullRequestAction
     runs-on: ubuntu-latest
     steps:
+      - name: Get branch name
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
       - name: Create Pull Request
         uses: vsoch/pull-request-action@master
         env:
@@ -13,4 +16,5 @@ jobs:
           BRANCH_PREFIX: "feature/"
           PULL_REQUEST_BRANCH: "develop"
           PULL_REQUEST_BODY: "This is the automated pull request for reviewing new feature"
-          PULL_REQUEST_TITLE: "Feature/${GITHUB_REF##*/}"
+          PULL_REQUEST_TITLE: "Feature/${{ env.BRANCH_NAME }}"
+          PULL_REQUEST_DRAFT: true
