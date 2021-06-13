@@ -5,10 +5,13 @@ import com.devtools.plugin.exceptions.RequestException;
 import com.devtools.plugin.text.translator.Request;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -32,8 +35,10 @@ public class TranslateRequest implements Request {
 
     @Override
     public String send(String textToTranslate) throws RequestException {
+        textToTranslate = textToTranslate.replaceAll(" ", "%20");
+
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://systran-systran-platform-for-language-processing-v1.p.rapidapi.com/translation/text/translate?source=auto&target=ru&input=" + textToTranslate))
+                .uri(encodeUrl(textToTranslate))
                 .header("x-rapidapi-key", token)
                 .header("x-rapidapi-host", "systran-systran-platform-for-language-processing-v1.p.rapidapi.com")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
@@ -48,7 +53,7 @@ public class TranslateRequest implements Request {
     /**
      * Exctracts token from token.txt file
      * @return api token
-     * @throws NoTokenException
+     * @throws NoTokenException - throws, when token for api is not presented
      */
     private String extractToken() throws NoTokenException {
         try {
@@ -56,5 +61,22 @@ public class TranslateRequest implements Request {
         } catch (IOException e) {
             throw new NoTokenException("There is no file with token provided", e);
         }
+    }
+
+    /**
+     * Constructs URL for request from baseUrl and query(text to translate)
+     * @param textToTranslate - query for request
+     * @return {@link URI}, ready for HTTPRequest
+     */
+    private URI encodeUrl(String textToTranslate) {
+        String baseUrl = "https://systran-systran-platform-for-language-processing-v1.p.rapidapi.com/translation/text/translate?source=auto&target=ru&input=";
+        String encodedQuery;
+        try {
+            encodedQuery = URLEncoder.encode(textToTranslate, StandardCharsets.UTF_8.toString());
+        } catch (UnsupportedEncodingException ex) {
+            throw new RuntimeException("Error with encoding URL", ex.getCause());
+        }
+
+        return URI.create(baseUrl + encodedQuery);
     }
 }
