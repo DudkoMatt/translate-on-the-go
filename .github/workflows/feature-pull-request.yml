@@ -1,0 +1,16 @@
+name: Pull Request on New Feature
+on:
+  create
+jobs:
+  auto-pull-request:
+    name: PullRequestAction
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Pull Request
+        uses: vsoch/pull-request-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_PREFIX: "feature/"
+          PULL_REQUEST_BRANCH: "develop"
+          PULL_REQUEST_BODY: "This is the automated pull request for reviewing new feature"
+          PULL_REQUEST_TITLE: ${{ github.head_ref }}

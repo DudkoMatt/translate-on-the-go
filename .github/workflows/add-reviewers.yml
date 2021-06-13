@@ -1,0 +1,21 @@
+name: Add Reviewers to PR
+on:
+  pull_request:
+    types: [opened, reopened]
+jobs:
+  auto-attach-reviewers:
+    name: PullRequestAction
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add Reviewers
+        uses: madrapps/add-reviewers@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          reviewers: DudkoMatt,castlesofplacebo,Igor-bite
+          re-request-when-approved: true
+          re-request-when-changes-requested: true
+      - name: Assign PullRequest to Project
+        uses: technote-space/create-project-card-action@v1
+        with:
+          PROJECT: Translate On The Go
+          COLUMN: ${{ github.actor }}
