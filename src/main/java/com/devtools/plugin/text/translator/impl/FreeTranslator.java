@@ -12,6 +12,6 @@ public class FreeTranslator implements Translator {
         TranslateRequest request = new TranslateRequest();
 
         JSONObject obj = new JSONObject(request.send(text));
-        return obj.getJSONArray("outputs").getJSONObject(0).getString("output");
+        return obj.getString("translatedText");
     }
 }

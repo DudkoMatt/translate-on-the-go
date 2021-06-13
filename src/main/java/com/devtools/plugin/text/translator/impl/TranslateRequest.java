@@ -1,80 +1,60 @@
 package com.devtools.plugin.text.translator.impl;
 
-import com.devtools.plugin.exceptions.NoTokenException;
 import com.devtools.plugin.exceptions.RequestException;
 import com.devtools.plugin.text.translator.Request;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TranslateRequest implements Request {
-     private final String token;
-     private final static String baseUrl = "https://systran-systran-platform-for-language-processing-v1.p.rapidapi.com/translation/text/translate?source=auto&target=ru&input=";
-
-    /**
-     * Constructor from token for API
-     * @param token api token
-     */
-    TranslateRequest(String token) {
-        this.token = token;
-    }
-
-    /**
-     * Constructor from token for API taken from file token.txt
-     */
-    TranslateRequest() throws NoTokenException {
-        this.token = extractToken();
-    }
-
     @Override
     public String send(String textToTranslate) throws RequestException {
+        Map<Object, Object> data = new HashMap<>();
+        data.put("q", "Text to translate");
+        data.put("source", "en");
+        data.put("target", "ru");
+
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(encodeUrl(textToTranslate))
-                .header("x-rapidapi-key", token)
-                .header("x-rapidapi-host", "systran-systran-platform-for-language-processing-v1.p.rapidapi.com")
-                .method("GET", HttpRequest.BodyPublishers.noBody())
+                .POST(buildFormDataFromMap(data))
+                .uri(URI.create("https://translate.astian.org/translate"))
+                .header("Content-Type", "application/x-www-form-urlencoded")
                 .build();
+
+        HttpResponse<String> response = null;
         try {
-            return HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString()).body();
+            response = httpClient.send(request, HttpResponse.BodyHandlers.ofString()); // ToDO: add multi-threading
         } catch (IOException | InterruptedException e) {
-            throw new RequestException("Error with sending the request", e);
+            e.printStackTrace();
         }
+
+        // print status code
+//        System.out.println(response.statusCode());
+
+        return response.body();
+
     }
 
-    /**
-     * Exctracts token from token.txt file
-     * @return api token
-     * @throws NoTokenException - throws, when token for api is not presented
-     */
-    private String extractToken() throws NoTokenException {
-        try {
-            return new Scanner(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("token.txt"))).nextLine();
-        } catch (NullPointerException e) {
-            throw new NoTokenException("There is no file with token provided", e);
-        }
-    }
+    private final HttpClient httpClient = HttpClient.newBuilder()
+            .version(HttpClient.Version.HTTP_2)
+            .build();
 
-    /**
-     * Constructs URL for request from baseUrl and query(text to translate)
-     * @param textToTranslate - query for request
-     * @return {@link URI}, ready for HTTPRequest
-     */
-    private URI encodeUrl(String textToTranslate) {
-        String encodedQuery;
-        try {
-            encodedQuery = URLEncoder.encode(textToTranslate, StandardCharsets.UTF_8.toString());
-        } catch (UnsupportedEncodingException ex) {
-            throw new RuntimeException("Error with encoding URL", ex.getCause());
+    private static HttpRequest.BodyPublisher buildFormDataFromMap(Map<Object, Object> data) {
+        var builder = new StringBuilder();
+        for (Map.Entry<Object, Object> entry : data.entrySet()) {
+            if (builder.length() > 0) {
+                builder.append("&");
+            }
+            builder.append(URLEncoder.encode(entry.getKey().toString(), StandardCharsets.UTF_8));
+            builder.append("=");
+            builder.append(URLEncoder.encode(entry.getValue().toString(), StandardCharsets.UTF_8));
         }
-
-        return URI.create(baseUrl + encodedQuery);
+        return HttpRequest.BodyPublishers.ofString(builder.toString());
     }
 }
