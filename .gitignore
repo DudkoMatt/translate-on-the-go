@@ -262,6 +262,6 @@ gradle-app.setting
 **/build/
 
 # End of https://www.toptal.com/developers/gitignore/api/git,java,macos,gradle,windows,code-java,intellij+all,intellij+iml
-src/main/java/com/devtools/plugin/text/translator/token.txt
+/**/token.txt
 
 src/main/java/Main.java

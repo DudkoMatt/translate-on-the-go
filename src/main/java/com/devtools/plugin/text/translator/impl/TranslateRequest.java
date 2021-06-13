@@ -14,6 +14,8 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Objects;
+import java.util.Scanner;
 
 public class TranslateRequest implements Request {
      private final String token;
@@ -56,8 +58,8 @@ public class TranslateRequest implements Request {
      */
     private String extractToken() throws NoTokenException {
         try {
-            return Files.readString(Paths.get("./src/main/java/com/devtools/plugin/text/translator/token.txt"));
-        } catch (IOException e) {
+            return new Scanner(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("token.txt"))).nextLine();
+        } catch (NullPointerException e) {
             throw new NoTokenException("There is no file with token provided", e);
         }
     }
