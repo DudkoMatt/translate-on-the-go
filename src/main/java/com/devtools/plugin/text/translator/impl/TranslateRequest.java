@@ -16,7 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class TranslateRequest implements Request {
-    final private String token;
+    private final String token;
 
     /**
      * Constructor from token for API
