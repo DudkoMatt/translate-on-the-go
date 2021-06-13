@@ -1,6 +1,6 @@
 name: Pull Request on New Feature
 on:
-  push:
+  create:
     branches-ignore:
       - 'master'
       - 'develop'
@@ -18,10 +18,3 @@ jobs:
           PULL_REQUEST_BRANCH: "develop"
           PULL_REQUEST_BODY: "This is the automated pull request for reviewing new feature"
           PULL_REQUEST_TITLE: ${{ github.head_ref }}
-      - name: Add Reviewers
-        uses: madrapps/add-reviewers@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          reviewers: DudkoMatt,castlesofplacebo,Igor-bite
-          re-request-when-approved: true
-          re-request-when-changes-requested: true
