@@ -10,11 +10,18 @@ jobs:
     name: PullRequestAction
     runs-on: ubuntu-latest
     steps:
-      - name: pull-request-action
+      - name: Create Pull Request
         uses: vsoch/pull-request-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH_PREFIX: "feature/"
           PULL_REQUEST_BRANCH: "develop"
           PULL_REQUEST_BODY: "This is the automated pull request for reviewing new feature"
-          PULL_REQUEST_TITLE: "Feature/${{ github.head_ref }}"
+          PULL_REQUEST_TITLE: ${{ github.head_ref }}
+      - name: Add Reviewers
+        uses: madrapps/add-reviewers@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          reviewers: DudkoMatt,castlesofplacebo,Igor-bite
+          re-request-when-approved: true
+          re-request-when-changes-requested: true
