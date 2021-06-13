@@ -13,4 +13,4 @@ jobs:
           BRANCH_PREFIX: "feature/"
           PULL_REQUEST_BRANCH: "develop"
           PULL_REQUEST_BODY: "This is the automated pull request for reviewing new feature"
-          PULL_REQUEST_TITLE: ${{ github.head_ref }}
+          PULL_REQUEST_TITLE: "Feature/${GITHUB_REF##*/}"
