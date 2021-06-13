@@ -18,5 +18,9 @@
 
     <actions>
         <!-- Add your actions here -->
+        <action id="com.devtools.plugin.actions.HotkeyTriggeredAction" class="com.devtools.plugin.actions.HotkeyTriggeredAction"
+                text="TestAction" description="This is a test action">
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl BACK_SLASH" second-keystroke="ctrl T"/>
+        </action>
     </actions>
 </idea-plugin>
