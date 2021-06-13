@@ -22,7 +22,7 @@ Pull requests are more than welcome here.
 ## Usage
 //TODO
 
-## Contributirs
+## Contributors
 
 * [Matthew Dudko](https://github.com/DudkoMatt)
 * [Igor Klyuzhev](https://github.com/Igor-bite)
