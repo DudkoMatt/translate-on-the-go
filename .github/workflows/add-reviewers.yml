@@ -1,4 +1,4 @@
-name: Pull Request on New Feature
+name: Add Reviewers to PR
 on:
   pull_request:
     types: [opened, reopened]

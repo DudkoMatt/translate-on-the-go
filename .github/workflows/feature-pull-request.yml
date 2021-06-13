@@ -1,10 +1,6 @@
 name: Pull Request on New Feature
 on:
-  create:
-    branches-ignore:
-      - 'master'
-      - 'develop'
-      - 'hotfix'
+  create
 jobs:
   auto-pull-request:
     name: PullRequestAction
