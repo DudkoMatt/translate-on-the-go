@@ -8,6 +8,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.ui.Messages;
 import org.jetbrains.annotations.NotNull;
 
 public class HotkeyTriggeredAction extends AnAction {
@@ -15,11 +16,13 @@ public class HotkeyTriggeredAction extends AnAction {
     public void actionPerformed(@NotNull AnActionEvent event) {
         Editor editor = event.getData(PlatformDataKeys.EDITOR);
         if (editor == null) {
+            Messages.showMessageDialog("Selection is empty. Select text and trigger action again", "Translate On The Go", Messages.getInformationIcon());
             return;
         }
 
         String selectedText = editor.getSelectionModel().getSelectedText();
         if (selectedText == null) {
+            new PopupMessage(event).showErrorMessage("Select text to translate");
             return;
         }
 
