@@ -8,11 +8,13 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    compile 'com.github.stleary:JSON-java:20210307'
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
@@ -21,8 +23,7 @@ intellij {
 }
 patchPluginXml {
     changeNotes """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
+      <em>Initial release</em>"""
 }
 test {
     useJUnitPlatform()

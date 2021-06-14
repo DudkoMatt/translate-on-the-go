@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/git,gradle,intellij+all,intellij+iml,java,code-java
-# Edit at https://www.toptal.com/developers/gitignore?templates=git,gradle,intellij+all,intellij+iml,java,code-java
+# Created by https://www.toptal.com/developers/gitignore/api/git,java,macos,gradle,windows,code-java,intellij+all,intellij+iml
+# Edit at https://www.toptal.com/developers/gitignore?templates=git,java,macos,gradle,windows,code-java,intellij+all,intellij+iml
 
 ### Code-Java ###
 # Language Support for Java(TM) by Red Hat extension for Visual Studio Code - https://marketplace.visualstudio.com/items?itemName=redhat.java
@@ -187,6 +187,61 @@ modules.xml
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### Windows ###
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
 ### Gradle ###
 .gradle
 build/
@@ -206,4 +261,7 @@ gradle-app.setting
 ### Gradle Patch ###
 **/build/
 
-# End of https://www.toptal.com/developers/gitignore/api/git,gradle,intellij+all,intellij+iml,java,code-java
+# End of https://www.toptal.com/developers/gitignore/api/git,java,macos,gradle,windows,code-java,intellij+all,intellij+iml
+/**/token.txt
+
+src/main/java/Main.java

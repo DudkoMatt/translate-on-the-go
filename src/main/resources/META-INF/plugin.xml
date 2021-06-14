@@ -1,11 +1,11 @@
 <idea-plugin>
     <id>com.dreamteam.translator.translate-on-the-go</id>
-    <name>Plugin display name here</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <name>Translate On The Go</name>
+    <vendor email="github.dudko.matt@mail.ru" url="https://github.com/DudkoMatt/translate-on-the-go">DreamTeam</vendor>
 
     <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
+    Translating text on the go right from IntelliJ IDEA.<br><br>
+    <a href="https://github.com/DudkoMatt/translate-on-the-go">Translate On The Go</a>
     ]]></description>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
@@ -18,5 +18,9 @@
 
     <actions>
         <!-- Add your actions here -->
+        <action id="com.devtools.plugin.actions.HotkeyTriggeredAction" class="com.devtools.plugin.actions.HotkeyTriggeredAction"
+                text="Translate On The Go" description="This is action will translate selected text into English">
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl BACK_SLASH" second-keystroke="ctrl T"/>
+        </action>
     </actions>
 </idea-plugin>
