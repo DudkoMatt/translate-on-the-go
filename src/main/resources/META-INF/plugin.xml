@@ -19,7 +19,7 @@
     <actions>
         <!-- Add your actions here -->
         <action id="com.devtools.plugin.actions.HotkeyTriggeredAction" class="com.devtools.plugin.actions.HotkeyTriggeredAction"
-                text="TestAction" description="This is a test action">
+                text="Translate On The Go" description="This is action will translate selected text into English">
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl BACK_SLASH" second-keystroke="ctrl T"/>
         </action>
     </actions>
