@@ -20,14 +20,13 @@ Pull requests are more than welcome here.
 * Any other language - English
 
 ## Usage
-//TODO
-
+Select the text that you want to translate into English, press CTRL+\\ and CTRL+T.
 
 ## References
 * [LibreTranslate](https://github.com/LibreTranslate/LibreTranslate)
 
 ## Contributors
 
-* [Matthew Dudko](https://github.com/DudkoMatt)
-* [Igor Klyuzhev](https://github.com/Igor-bite)
-* [Anna Sheludchenko](https://github.com/castlesofplacebo)
+* [Matthew Dudko](https://github.com/DudkoMatt) / [dudko_mv@mail.ru](dudko_mv@mail.ru)
+* [Igor Klyuzhev](https://github.com/Igor-bite) / [klyuzhevigor@gmail.com](klyuzhevigor@gmail.com)
+* [Anna Sheludchenko](https://github.com/castlesofplacebo) / [castlesofplacebo@gmail.com](castlesofplacebo@gmail.com)
