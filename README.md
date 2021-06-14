@@ -1,8 +1,8 @@
 # TRANSLATE-ON-THE-GO
 
-![systran](https://user-images.githubusercontent.com/71404543/121809967-9a752b80-cc67-11eb-843c-229b67884e2f.png)
+![libre1](https://user-images.githubusercontent.com/71404543/121957588-494e6000-cd6b-11eb-99c2-b3f261074b35.png)
 
-IDE Translator helping to write self-documenting code using SYSTRAN.io API (another excellent translator).
+IDE Translator helping to write self-documenting code using [LibreTranslate](https://translate.astian.org/) API (another excellent translator).
 
 ## Installation
 //TODO
@@ -21,6 +21,10 @@ Pull requests are more than welcome here.
 
 ## Usage
 //TODO
+
+
+## References
+* [LibreTranslate](https://github.com/LibreTranslate/LibreTranslate)
 
 ## Contributors
 
