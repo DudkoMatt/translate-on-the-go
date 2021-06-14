@@ -17,9 +17,9 @@ public class TranslateRequest implements Request {
     @Override
     public String send(String textToTranslate) throws RequestException {
         Map<Object, Object> data = new HashMap<>();
-        data.put("q", "Text to translate");
-        data.put("source", "en");
-        data.put("target", "ru");
+        data.put("q", textToTranslate);
+        data.put("source", "ru");
+        data.put("target", "en");
 
         HttpRequest request = HttpRequest.newBuilder()
                 .POST(buildFormDataFromMap(data))
@@ -27,18 +27,15 @@ public class TranslateRequest implements Request {
                 .header("Content-Type", "application/x-www-form-urlencoded")
                 .build();
 
-        HttpResponse<String> response = null;
         try {
-            response = httpClient.send(request, HttpResponse.BodyHandlers.ofString()); // ToDO: add multi-threading
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString()); // ToDO: add multi-threading
+            // print status code
+//        System.out.println(response.statusCode()); // ToDO: check status code
+
+            return response.body();
         } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            throw new RequestException("Can't send request, check internet connection.");
         }
-
-        // print status code
-//        System.out.println(response.statusCode());
-
-        return response.body();
-
     }
 
     private final HttpClient httpClient = HttpClient.newBuilder()
