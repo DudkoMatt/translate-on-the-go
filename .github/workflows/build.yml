@@ -70,9 +70,7 @@ jobs:
 
       # Run detekt, ktlint and tests
       - name: Run Linters and Test
-        run: |
-        chmod +x ./gradlew |
-        ./gradlew check
+        run: chmod +x ./gradlew && ./gradlew check
 
       # Run verifyPlugin Gradle task
       - name: Verify Plugin
