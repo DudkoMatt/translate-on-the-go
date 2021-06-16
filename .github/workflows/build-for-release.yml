@@ -4,15 +4,8 @@
 # - run buildPlugin task and prepare artifact for the further tests,
 # - run IntelliJ Plugin Verifier,
 # - create a draft release.
-#
-# Workflow is triggered on push and pull_request events.
-#
-# Docs:
-# - GitHub Actions: https://help.github.com/en/actions
-# - IntelliJ Plugin Verifier GitHub Action: https://github.com/ChrisCarini/intellij-platform-plugin-verifier-action
-#
 
-name: Build
+name: Build and release
 on:
   # Trigger the workflow on pushes to the 'develop,master,release' branch
   push:
@@ -44,10 +37,6 @@ jobs:
       # Setup Java 1.8 environment for the next steps
       - name: Setup Java
         run: sudo apt-get install openjdk-11-jdk
-#        uses: actions/setup-java@v2
-#        with:
-#          distribution: zulu
-#          java-version: 11
 
       # Check out current repository
       - name: Fetch Sources
@@ -91,10 +80,6 @@ jobs:
       # Setup Java 1.8 environment for the next steps
       - name: Setup Java
         run: sudo apt-get install openjdk-11-jdk
-#        uses: actions/setup-java@v2
-#        with:
-#          distribution: zulu
-#          java-version: 11
 
       # Check out current repository
       - name: Fetch Sources
@@ -153,10 +138,6 @@ jobs:
       # Setup Java 1.8 environment for the next steps
       - name: Setup Java
         run: sudo apt-get install openjdk-11-jdk
-#        uses: actions/setup-java@v2
-#        with:
-#          distribution: zulu
-#          java-version: 11
 
       # Check out current repository
       - name: Fetch Sources
