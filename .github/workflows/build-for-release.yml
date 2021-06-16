@@ -9,7 +9,7 @@ name: Build and release
 on:
   # Trigger the workflow on pushes to the 'develop,master,release' branch
   push:
-    branches: [master,release]
+    branches: [develop,master,release]
 
 jobs:
 
