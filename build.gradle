@@ -21,11 +21,19 @@ dependencies {
 intellij {
     version '2021.1.1'
 }
+
 patchPluginXml {
     changeNotes """
       Add change notes here.<br>
       <em>most HTML tags may be used</em>"""
 }
+
 test {
     useJUnitPlatform()
+}
+
+tasks {
+    runPluginVerifier {
+        ideVersions(['2020.1.4', '2020.2.3', '2021.1.2'])
+    }
 }
