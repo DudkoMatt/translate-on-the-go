@@ -14,9 +14,11 @@
 
 name: Build
 on:
-  # Trigger the workflow on pushes to the 'develop,master,release' branch
+  # Trigger the workflow on pushes to the 'develop,feature/**' branch
   push:
-    branches: [develop]
+    branches:
+      - 'develop'
+      - 'feature/**'
   # Trigger the workflow on any pull request
   pull_request:
 
