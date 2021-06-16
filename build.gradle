@@ -19,12 +19,20 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version '2021.1.1'
+    version '2020.1.4'
 }
+
 patchPluginXml {
     changeNotes """
       <em>Initial release</em>"""
 }
+
 test {
     useJUnitPlatform()
+}
+
+tasks {
+    runPluginVerifier {
+        ideVersions(['2020.1.4', '2020.2.3', '2021.1.2'])
+    }
 }
