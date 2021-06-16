@@ -25,7 +25,7 @@ jobs:
   # Run Gradle Wrapper Validation Action to verify the wrapper's checksum
   gradleValidation:
     name: Gradle Wrapper
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
 
       # Check out current repository
@@ -40,7 +40,7 @@ jobs:
   test:
     name: Test
     needs: gradleValidation
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
 
       # Setup Java 1.8 environment for the next steps
@@ -81,7 +81,7 @@ jobs:
   build:
     name: Build
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     outputs:
       name: ${{ steps.properties.outputs.name }}
       version: ${{ steps.properties.outputs.version }}
@@ -152,7 +152,7 @@ jobs:
   verify:
     name: Verify
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
 
       # Setup Java 1.8 environment for the next steps
@@ -211,7 +211,7 @@ jobs:
     name: Release Draft
     if: github.event_name != 'pull_request'
     needs: [build, verify]
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
 
       # Check out current repository
