@@ -18,3 +18,18 @@ jobs:
           PULL_REQUEST_BODY: "This is the automated pull request for reviewing new feature"
           PULL_REQUEST_TITLE: "Feature/${{ env.BRANCH_NAME }}"
           PULL_REQUEST_DRAFT: true
+      - name: Assign Pull Request to Project
+        uses: technote-space/create-project-card-action@v1
+        with:
+          PROJECT: "Translate On The Go"
+          COLUMN: ${{ github.actor }}
+  assignAuthor:
+    name: Assign author to PR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: technote-space/assign-author@v1
+  addLabelsByBranch:
+    name: PR Labeler
+    runs-on: ubuntu-latest
+    steps:
+      - uses: technote-space/pr-labeler-action@v4
