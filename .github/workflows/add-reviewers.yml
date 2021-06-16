@@ -1,7 +1,7 @@
 name: Add Reviewers to PR
 on:
   pull_request:
-    types: [opened, reopened]
+    types: [unlocked]
 jobs:
   auto-attach-reviewers:
     name: PullRequestAction
