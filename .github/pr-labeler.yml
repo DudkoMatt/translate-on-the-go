@@ -1,4 +1,0 @@
-enhancement: ['feature/*', 'feat/*']
-fix: ['hotfix/*', 'fix/*']
-chore: chore/*
-release: release/*
