@@ -1,11 +1,15 @@
 # TRANSLATE-ON-THE-GO
 
-![libre1](https://user-images.githubusercontent.com/71404543/121957588-494e6000-cd6b-11eb-99c2-b3f261074b35.png)
+![image_2021-06-17_13-30-49](https://user-images.githubusercontent.com/71404543/122380237-58522f80-cf70-11eb-9495-8f41aa706d09.png)
 
 IDE Translator helping to write self-documenting code using [LibreTranslate](https://translate.astian.org/) API (another excellent translator).
 
 ## Installation
-//TODO
+To install plugin, download zip-file [``v1.0-SNAPSHOT``](https://github.com/DudkoMatt/translate-on-the-go/releases).
+
+In IntelliJ IDEA:
+
+``Settings -> Plugins -> [Press Gear] -> Install Plugin from Disk -> [Choose downloaded zip-file]``.
 
 ## List of enhanced language support
 
