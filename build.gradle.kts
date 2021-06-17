@@ -6,7 +6,6 @@ plugins {
     id("java")
     id("org.jetbrains.intellij") version "1.0"
     id("org.jetbrains.changelog") version "1.1.2"
-//    id("org.jetbrains.kotlin.jvm") version "1.5.10"
 }
 
 group = properties("pluginGroup")
@@ -18,7 +17,6 @@ repositories {
 }
 
 dependencies {
-//    implementation(kotlin("stdlib"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     implementation("com.github.stleary:JSON-java:20210307")
@@ -40,29 +38,10 @@ changelog {
 }
 
 tasks {
-    // Set the compatibility versions to 1.8
-//    withType<JavaCompile> {
-//        sourceCompatibility = "1.8"
-//        targetCompatibility = "1.8"
-//    }
-
     patchPluginXml {
         version.set(properties("pluginVersion"))
         sinceBuild.set(properties("pluginSinceBuild"))
         untilBuild.set(properties("pluginUntilBuild"))
-
-        // Extract the <!-- Plugin description --> section from README.md and provide for the plugin's manifest
-//        pluginDescription.set(
-//            File(projectDir, "README.md").readText().lines().run {
-//                val start = "<!-- Plugin description -->"
-//                val end = "<!-- Plugin description end -->"
-//
-//                if (!containsAll(listOf(start, end))) {
-//                    throw GradleException("Plugin description section not found in README.md:\n$start ... $end")
-//                }
-//                subList(indexOf(start) + 1, indexOf(end))
-//            }.joinToString("\n").run { markdownToHTML(this) }
-//        )
 
         // Get the latest available change notes from the changelog file
         changeNotes.set(File(projectDir, "CHANGELOG.md").readText().lines().joinToString("\n").run { markdownToHTML(this) })
