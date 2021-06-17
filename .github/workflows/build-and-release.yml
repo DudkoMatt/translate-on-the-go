@@ -29,6 +29,7 @@ jobs:
   gradleValidation:
     name: Gradle Wrapper
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     steps:
 
       # Check out current repository
@@ -44,6 +45,7 @@ jobs:
     name: Test
     needs: gradleValidation
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
 
       # Setup Java 1.8 environment for the next steps
@@ -82,6 +84,7 @@ jobs:
     name: Build
     needs: test
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     outputs:
       name: ${{ steps.properties.outputs.name }}
       version: ${{ steps.properties.outputs.version }}
@@ -145,6 +148,7 @@ jobs:
     name: Verify
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
 
       # Setup Java 1.8 environment for the next steps
@@ -199,6 +203,7 @@ jobs:
     if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
     needs: [build, verify]
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
 
       # Check out current repository
