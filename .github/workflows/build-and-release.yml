@@ -249,3 +249,13 @@ jobs:
           asset_path: ./${{ needs.build.outputs.artifact }}
           asset_name: ${{ needs.build.outputs.artifact }}
           asset_content_type: application/zip
+
+  releaseToJetBrainsRepository:
+    name: Publish plugin to JetBrains Repository
+    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
+    needs: [build, verify]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Publish plugin
+        run: chmod +x ./gradlew && ./gradlew publishPlugin
