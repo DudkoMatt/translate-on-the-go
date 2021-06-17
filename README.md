@@ -16,6 +16,7 @@ In IntelliJ IDEA:
 Pull requests are more than welcome here.
 
 ### Stable
+Unsing with camelCase, snake_case, kebab-case, PascalCase, UPPER_CASE_SNAKE_CASE
 
 * Russian - English
 
