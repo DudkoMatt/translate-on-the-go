@@ -33,7 +33,7 @@ public class PopupMessage {
     }
 
     public void showTranslatedText(String text) {
-        createPopupMessage(text, JBColor.green);
+        createPopupMessage(text, JBColor.black);
     }
 
     public void showErrorMessage(String text) {
