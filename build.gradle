@@ -33,6 +33,6 @@ test {
 
 tasks {
     runPluginVerifier {
-        ideVersions(['2021.1.2'])
+         ideVersions(pluginVerifierIdeVersions)
     }
 }
