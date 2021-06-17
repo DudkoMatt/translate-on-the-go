@@ -1,6 +1,8 @@
 name: Pull Request on New Feature
 on:
-  create
+  create:
+    branches:
+      - "feature/**"
 jobs:
   auto-pull-request:
     name: PullRequestAction
