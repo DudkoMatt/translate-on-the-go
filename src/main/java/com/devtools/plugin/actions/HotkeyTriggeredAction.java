@@ -1,6 +1,7 @@
 package com.devtools.plugin.actions;
 
 import com.devtools.plugin.exceptions.RequestException;
+import com.devtools.plugin.text.CodeCaseTranslatorDecoratorImpl;
 import com.devtools.plugin.text.translator.Translator;
 import com.devtools.plugin.text.translator.impl.FreeTranslator;
 import com.devtools.plugin.ui.messages.PopupMessage;
@@ -26,7 +27,7 @@ public class HotkeyTriggeredAction extends AnAction {
             return;
         }
 
-        Translator translator = new FreeTranslator();
+        Translator translator = new CodeCaseTranslatorDecoratorImpl(new FreeTranslator());
         try {
             String translatedText = translator.translate(selectedText);
             new PopupMessage(event).showTranslatedText(translatedText);

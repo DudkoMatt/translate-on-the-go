@@ -1,6 +1,8 @@
 name: Pull Request on New Feature
 on:
-  create
+  create:
+    branches:
+      - "feature/**"
 jobs:
   auto-pull-request:
     name: PullRequestAction
@@ -8,7 +10,7 @@ jobs:
     steps:
       - name: Get branch name
         shell: bash
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
+        run: GH_REF="${{ github.ref }}"; echo "BRANCH_NAME=$(echo ${GH_REF##*/})" >> $GITHUB_ENV
       - name: Create Pull Request
         uses: vsoch/pull-request-action@master
         env:
