@@ -5,11 +5,19 @@
 IDE Translator helping to write self-documenting code using [LibreTranslate](https://translate.astian.org/) API (another excellent translator).
 
 ## Installation
-To install plugin, download zip-file [``v1.0-SNAPSHOT``](https://github.com/DudkoMatt/translate-on-the-go/releases).
+
+### Download from releases:
+To install plugin, download zip-file [``desired version``](https://github.com/DudkoMatt/translate-on-the-go/releases).
 
 In IntelliJ IDEA:
 
 ``Settings -> Plugins -> [Press Gear] -> Install Plugin from Disk -> [Choose downloaded zip-file]``.
+
+### Download from marketplace:
+In IntelliJ IDEA:
+
+``Settings -> Plugins -> Marketplace -> [Search "Translate On The Go"] -> Install``.
+
 
 ## List of enhanced language support
 
@@ -20,7 +28,7 @@ Unsing with camelCase, snake_case, kebab-case, PascalCase, UPPER_CASE_SNAKE_CASE
 
 * Russian - English
 
-### In progress
+### In future
 
 * Any other language - English
 
