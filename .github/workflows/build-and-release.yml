@@ -300,4 +300,8 @@ jobs:
           key: ${{ runner.os }}-plugin-verifier-${{ steps.properties.outputs.ideVersions }}
 
       - name: Publish plugin
+        env:
+          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+          OPENSSL_CERTIFICATE: ${{ secrets.OPENSSL_CERTIFICATE }}
+          OPENSSL_CERTIFICATE_PRIVATE_KEY: ${{ secrets.OPENSSL_CERTIFICATE_PRIVATE_KEY }}
         run: chmod +x ./gradlew && ./gradlew publishPlugin
