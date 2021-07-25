@@ -29,8 +29,8 @@ public class CodeCaseTranslatorDecoratorImpl implements Translator {
         return ch;
     }
 
-    private String changeChar(char[] ch, int n, char signFrom, char signTo) {
-        for (int i = 0; i < n; ++i) {
+    private String changeChar(char[] ch, char signFrom, char signTo) {
+        for (int i = 0; i < ch.length; ++i) {
             if (ch[i] == signFrom) {
                 ch[i] = signTo;
             }
@@ -59,23 +59,23 @@ public class CodeCaseTranslatorDecoratorImpl implements Translator {
     }
 
     private String fromKebabCase(char[] ch, int n) {
-        return changeChar(ch, n, '-', ' ');
+        return changeChar(ch, '-', ' ');
     }
 
     private String fromUpperCase(char[] ch, int n) {
-        return changeChar(fromUpperToLower(ch), n, '_', ' ');
+        return changeChar(fromUpperToLower(ch), '_', ' ');
     }
 
     private String toSnakeCase(String text) {
-        return changeChar(text.toCharArray(), text.length(), ' ', '_');
+        return changeChar(text.toCharArray(), ' ', '_');
     }
 
     private String toKebabCase(String text) {
-        return changeChar(text.toCharArray(), text.length(), ' ', '-');
+        return changeChar(text.toCharArray(), ' ', '-');
     }
 
     private String toUpperCaseSnakeCase(String text) {
-        return changeChar(fromLowerToUpper(text.toCharArray()), text.length(), ' ', '_');
+        return changeChar(fromLowerToUpper(text.toCharArray()), ' ', '_');
     }
 
     private String toCamelCase(String text, boolean startsWithUpper) {
