@@ -67,11 +67,11 @@ public class CodeCaseTranslatorDecoratorImpl implements Translator {
     }
 
     private String toSnakeCase(String text) {
-        return changeChar(text.toCharArray(), ' ', '_');
+        return changeChar(fromUpperToLower(text.toCharArray()), ' ', '_');
     }
 
     private String toKebabCase(String text) {
-        return changeChar(text.toCharArray(), ' ', '-');
+        return changeChar(fromUpperToLower(text.toCharArray()), ' ', '-');
     }
 
     private String toUpperCaseSnakeCase(String text) {
@@ -86,8 +86,7 @@ public class CodeCaseTranslatorDecoratorImpl implements Translator {
 
         if (startsWithUpper) {
             ch[0] = Character.toUpperCase(ch[0]);
-        }
-        else {
+        } else {
             ch[0] = Character.toLowerCase(ch[0]);
         }
 
