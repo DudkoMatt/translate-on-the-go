@@ -1,5 +1,9 @@
 ### Changes from previous version:
 
+* Fixed code-case translation
+  
+----------------------------------------
+
 * Published plugin to IntelliJ market
 * Added code-style translating feature
 * Improved color of the translated text - now it is black/white depending on editor theme
